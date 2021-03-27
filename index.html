@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+
+    <script type="text/javascript">
+
+        var quoteList = new Array();
+        quoteList.push("I am a quote");
+        quoteList.push("I am another quote");
+        quoteList.push("I am another quote2");
+        quoteList.push("I am another quote3");
+        quoteList.push("I am another quote4");
+        quoteList.push("I am another quote5");
+        quoteList.push("I am another quote6");
+        quoteList.push("I am another quote7");
+        quoteList.push("I am another quote8");
+        quoteList.push("I am another quote9");
+        quoteList.push("I am another quote10");
+        //follow the pattern of the above lines to add quotes
+
+        var randomQuote = function() {
+            var index = Math.floor(Math.random()*quoteList.length);
+            return quoteList[index];
+        };
+
+        $(document).ready(function() {
+            var $quote = $("#quote");
+            var newQuote = randomQuote();
+            $quote.html(newQuote);
+            
+            $("body").click(function() {
+                $quote.fadeOut(200,function() {
+                    var newQuote = randomQuote();
+                    $quote.html(newQuote);
+                    $quote.fadeIn(500,function() {
+                    });
+                });
+            });
+        });
+    </script>
+
+    <style type="text/css">
+        html,body {
+            background-color:black;
+            color:white;
+            font-weight:bold;
+            height:100%;
+            font-size:2em;
+        }
+
+        #main-container {
+            display:table;
+            height:100%;
+            width:100%;
+        }
+
+        #vertical-align-container {
+            display:table-cell;
+            vertical-align:middle;
+            text-align:center;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="main-container">
+        <div id="vertical-align-container">
+            <span id="quote">I'm a quote</span> 
+        </div>
+    </div>
+</body>
+
+</html>
